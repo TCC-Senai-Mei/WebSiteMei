@@ -1,0 +1,508 @@
+/* ==========================================================================
+   1. RESET E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-green: #0f3d2e;
+    --light-green: #cbe6c4;
+    --accent-yellow: #cae79e;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --bg-light: #f4f9f6;
+    --border-color: #e5e7eb;
+}
+
+body {
+    background-color: #ffffff;
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. ESTILOS BASE (MOBILE-FIRST)
+   ========================================================================== */
+
+.page-container {
+    display: flex;
+    flex-direction: column; /* Empilhado no Mobile */
+    min-height: 100vh;
+}
+
+/* --- Painel Verde (Topo no Mobile) --- */
+.sidebar {
+    background-color: var(--primary-green);
+    color: #ffffff;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Logotipo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.logo-graphics {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    position: absolute;
+}
+
+.sq-1 {
+    background-color: var(--light-green);
+    top: 0;
+    left: 0;
+}
+
+.sq-2 {
+    background-color: #ffffff;
+    bottom: 0;
+    right: 0;
+    opacity: 0.8;
+}
+
+.logo-text h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.logo-text p {
+    font-size: 0.75rem;
+    color: #a3bfb2;
+}
+
+/* Conteúdo Textual */
+.main-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.main-title .highlight {
+    color: var(--accent-yellow);
+}
+
+.description {
+    color: #cbdad2;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
+}
+
+/* Lista de Benefícios */
+.benefits-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: #e2ede8;
+    line-height: 1.4;
+}
+
+.check-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    border: 2px solid #5a8574;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    color: var(--accent-yellow);
+    font-weight: bold;
+}
+
+.sidebar-footer {
+    font-size: 0.75rem;
+    color: #618778;
+    line-height: 1.4;
+    margin-top: auto;
+}
+
+/* --- Painel de Conteúdo Branco (Baixo no Mobile) --- */
+.main-content {
+    padding: 3rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 540px;
+}
+
+.welcome-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Cards de Acesso */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.access-card {
+    display: flex;
+    align-items: center;
+    padding: 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+.access-card:hover {
+    background-color: #f9fbf9;
+    border-color: #cbdad2;
+    transform: translateY(-1px);
+}
+
+.icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.bg-light-green {
+    background-color: #e4f4db;
+}
+
+.bg-dark-green {
+    background-color: var(--primary-green);
+    color: #ffffff;
+}
+
+.card-text {
+    flex-grow: 1;
+}
+
+.card-text h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.card-text p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.arrow-icon {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-left: 0.5rem;
+}
+
+/* Divisória e Demonstração */
+.divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 2.5rem 0 2rem 0;
+}
+
+.demo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.demo-title {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.demo-badge {
+    background-color: var(--bg-light);
+    border: 1px solid #eef5f1;
+    border-radius: 30px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+/* Botão Flutuante de Ajuda */
+.floating-help-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   3. SISTEMA DE VISÕES (SWITCHING VIEWS COM JAVASCRIPT)
+   ========================================================================== */
+.view {
+    display: none !important; /* Oculto por padrão */
+}
+
+.view.active {
+    display: block !important; /* Exibe apenas a classe ativa */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(8px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   4. COMPONENTES DAS TELAS DE LOGIN (PORTAL DO MEI & SERVIDOR)
+   ========================================================================== */
+
+/* Botão Voltar */
+.btn-back {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+}
+
+.btn-back:hover {
+    color: var(--primary-green);
+}
+
+/* Cabeçalho do formulário */
+.header-login {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.inline-icon {
+    margin-right: 0;
+    flex-shrink: 0;
+}
+
+.login-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.login-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Caixa de aviso (Exclusivo Servidor) */
+.info-callout {
+    background-color: #f2f7f4;
+    border: 1px solid #e1ede6;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    font-size: 0.88rem;
+    color: #374151;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+/* Estrutura do Formulário */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-green);
+}
+
+/* Container de Senha com Olho */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.6;
+    font-size: 1.1rem;
+    transition: opacity 0.2s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+/* Botão de Envio */
+.btn-submit {
+    background-color: var(--primary-green);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #0b2e23;
+}
+
+/* Links de rodapé dos formulários */
+.form-footer-links {
+    margin-top: 1.5rem;
+    display: flex;
+    font-size: 0.95rem;
+}
+
+.form-footer-links a {
+    color: var(--primary-green);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.form-footer-links a:hover {
+    text-decoration: underline;
+}
+
+.split-links {
+    justify-content: space-between;
+}
+
+.center-links {
+    justify-content: center;
+}
+
+/* ==========================================================================
+   5. MEDIA QUERIES (DESKTOP / PROPORÇÕES DA TELA)
+   ========================================================================== */
+@media (min-width: 992px) {
+    .page-container {
+        flex-direction: row; /* Lado a lado em telas grandes */
+    }
+
+    .sidebar {
+        width: 42%; /* Mantém a proporção da imagem de referência */
+        padding: 4rem 3.5rem;
+        min-height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .main-content {
+        width: 58%;
+        padding: 4rem;
+    }
+
+    .main-title {
+        font-size: 2.8rem;
+        margin-top: 2rem;
+    }
+
+    .welcome-title {
+        font-size: 2.4rem;
+    }
+}
