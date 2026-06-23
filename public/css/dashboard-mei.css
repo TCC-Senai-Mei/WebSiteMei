@@ -1,0 +1,164 @@
+/* ==========================================================================
+   1. RESET E CONFIGURAÇÕES GERAIS DO DASHBOARD
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-green: #0f3d2e;
+    --light-green: #cbe6c4;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+}
+
+body {
+    background-color: #f8fafc;
+    color: var(--text-dark);
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Container Principal do Sistema Interno */
+.dashboard-container {
+    display: flex;
+    flex-direction: column; /* Mobile stack */
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ==========================================================================
+   2. BARRA LATERAL (SIDEBAR INTERNA)
+   ========================================================================== */
+.dash-sidebar {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    flex-shrink: 0;
+}
+
+.dash-logo { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; padding-left: 0.5rem; }
+
+.logo-graphics { position: relative; width: 32px; height: 32px; }
+.square { width: 20px; height: 20px; border-radius: 4px; position: absolute; }
+.sq-1 { background-color: var(--light-green); top: 0; left: 0; }
+.sq-2 { background-color: var(--primary-green); bottom: 0; right: 0; opacity: 0.8; }
+
+.dash-logo h2 { font-size: 1.3rem; font-weight: 700; color: var(--primary-green); line-height: 1; }
+.dash-logo p { font-size: 0.7rem; color: var(--text-muted); }
+
+.dash-menu { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; }
+.menu-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; color: #4b5563; text-decoration: none; font-size: 0.95rem; font-weight: 500; border-radius: 10px; transition: all 0.2s; }
+.menu-item:hover, .menu-item.active { background-color: #eef6f0; color: var(--primary-green); font-weight: 600; }
+
+.dash-user-profile { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 0.5rem; border-top: 1px solid var(--border-color); margin-bottom: 1rem; }
+.avatar { width: 40px; height: 40px; background-color: var(--primary-green); color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.9rem; }
+.user-info h4 { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
+.user-info p { font-size: 0.75rem; color: var(--text-muted); }
+
+.dash-sidebar-footer { display: flex; justify-content: space-between; align-items: center; }
+.btn-logout-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 1rem; text-decoration: none; font-size: 0.9rem; color: #4b5563; border-radius: 8px; transition: background 0.2s; font-weight: 500; }
+.btn-logout-link:hover { background-color: #fee2e2; color: #dc2626; }
+.btn-collapse { background: none; border: none; color: #4b5563; cursor: pointer; font-size: 0.9rem; padding: 0.5rem; }
+
+/* ==========================================================================
+   3. ÁREA DE CONTEÚDO PRINCIPAL (CABEÇALHO + CORPO)
+   ========================================================================== */
+.dash-main-content { flex-grow: 1; display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+
+/* Header Superior */
+.dash-header { height: 70px; background-color: #ffffff; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; flex-shrink: 0; }
+.search-bar { display: flex; align-items: center; background-color: #f1f5f9; border-radius: 12px; padding: 0.5rem 1rem; width: 180px; }
+.search-bar input { background: none; border: none; outline: none; margin-left: 0.5rem; width: 100%; font-size: 0.9rem; color: var(--text-dark); }
+
+.header-actions { display: flex; align-items: center; gap: 1rem; }
+.notification-badge-container { position: relative; font-size: 1.2rem; cursor: pointer; }
+.badge-number { position: absolute; top: -5px; right: -5px; background-color: #ef4444; color: white; font-size: 0.65rem; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.user-badge { display: flex; align-items: center; gap: 0.5rem; }
+.mini-avatar { width: 32px; height: 32px; background-color: #115e59; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; }
+.mini-user-info { display: flex; flex-direction: column; line-height: 1.2; }
+.user-name { font-size: 0.85rem; font-weight: 600; }
+.user-role { font-size: 0.75rem; color: var(--text-muted); }
+
+/* Conteúdo com Rolagem */
+.dash-scroll-area { padding: 1.5rem; overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; gap: 1.5rem; }
+.welcome-banner h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.25rem; }
+.welcome-banner p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* Box de Alerta Amarelo/Laranja */
+.alert-box-pending { background-color: #fffbeb; border: 1px solid #fef3c7; border-radius: 16px; padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+.alert-content { display: flex; align-items: flex-start; gap: 0.75rem; }
+.alert-icon { font-size: 1.3rem; }
+.alert-text h3 { font-size: 0.95rem; font-weight: 700; color: #b45309; margin-bottom: 0.15rem; }
+.alert-text p { font-size: 0.85rem; color: #d97706; }
+.btn-resolve { background-color: #d97706; color: white; border: none; padding: 0.6rem 1.2rem; font-weight: 600; border-radius: 10px; cursor: pointer; font-size: 0.85rem; align-self: flex-start; }
+
+/* Cards de Métricas */
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
+.metric-card { background-color: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 1.25rem; }
+.metric-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+.metric-icon-box { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.box-blue { background-color: #eff6ff; color: #3b82f6; }
+.box-green { background-color: #ecfdf5; color: #10b981; }
+.box-yellow { background-color: #fefce8; color: #eab308; }
+.box-light-green { background-color: #f0fdf4; color: #22c55e; }
+.trend { font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 20px; }
+.trend.positive { background-color: #f0fdf4; color: #16a34a; }
+.trend.negative { background-color: #fef2f2; color: #dc2626; }
+.metric-value { font-size: 1.6rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.15rem; }
+.metric-label { font-size: 0.8rem; color: var(--text-muted); }
+
+/* Linha de Painéis (Gráficos e Tabelas) */
+.dashboard-panels-row { display: flex; flex-direction: column; gap: 1.25rem; }
+.panel-box { background-color: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 1.25rem; display: flex; flex-direction: column; }
+.panel-header { position: relative; margin-bottom: 1.25rem; }
+.panel-header h3 { font-size: 1rem; font-weight: 700; }
+.panel-subtitle { font-size: 0.8rem; color: var(--text-muted); }
+.trend-indicator-top { position: absolute; top: 0; right: 0; font-size: 0.8rem; font-weight: 600; color: #16a34a; }
+
+.panel-header-split { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+.panel-header-split h3 { font-size: 1rem; font-weight: 700; }
+.view-all-link { font-size: 0.8rem; color: var(--primary-green); text-decoration: none; font-weight: 600; }
+
+/* Simulação de Gráficos de Barra */
+.chart-mockup { display: flex; align-items: flex-end; justify-content: space-between; height: 140px; border-bottom: 1px solid var(--border-color); }
+.chart-bar-container { display: flex; flex-direction: column; align-items: center; width: 13%; height: 100%; justify-content: flex-end; }
+.bar { width: 100%; background-color: #f1f5f9; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+.bar-label { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.4rem; }
+.bar.active-bar { background-color: var(--primary-green); }
+
+/* Simulação da Lista de Protocolos */
+.protocol-list-mock { display: flex; flex-direction: column; gap: 0.75rem; }
+.protocol-item { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #f1f5f9; }
+.protocol-id { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); }
+.protocol-title { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
+.protocol-date { font-size: 0.7rem; color: var(--text-muted); }
+.status-badge { font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; }
+.status-badge.amber { background-color: #fef3c7; color: #d97706; }
+
+.floating-help-btn { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background-color: #ffffff; border: 1px solid var(--border-color); border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-size: 1.2rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100; }
+
+/* ==========================================================================
+   4. MEDIA QUERIES DO DASHBOARD (DESKTOP)
+   ========================================================================== */
+@media (min-width: 992px) {
+    .dashboard-container { flex-direction: row; }
+    .dash-sidebar { width: 260px; height: 100vh; border-right: 1px solid var(--border-color); border-bottom: none; padding: 1.5rem 1rem; }
+    .dash-menu { flex-grow: 1; }
+    .dash-header { padding: 0 2rem; }
+    .search-bar { width: 320px; }
+    .dash-scroll-area { padding: 2rem; gap: 2rem; }
+    .welcome-banner h1 { font-size: 1.8rem; }
+    .alert-box-pending { flex-direction: row; justify-content: space-between; align-items: center; }
+    .btn-resolve { align-self: center; }
+    .dashboard-panels-row { flex-direction: row; }
+    .flex-1 { flex: 1; }
+    .flex-2 { flex: 2; }
+}
